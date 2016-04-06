@@ -3,8 +3,8 @@
 set -e
 
 export REMOTE=origin
-export BRANCH=new_layout
-export REPO=github.com/Cepave/open-falcon
+export BRANCH=develop
+export REPO=github.com/Cepave/open-falcon-backend
 export WORKPATH=${GOPATH}/src/${REPO}
 export COMPONENT=${1:-all}
 export SUBMODULE_BRANCH=develop
@@ -15,7 +15,7 @@ function set_git_modules() {
   do
     git config -f .gitmodules ${module}.branch ${SUBMODULE_BRANCH}
   done
-  git config -f .gitmodules submodule.scripts/mysql.branch develop
+  git config -f .gitmodules submodule.scripts/mysql.branch ${SUBMODULE_BRANCH}
 }
 
 #######################################
@@ -23,7 +23,7 @@ function set_git_modules() {
 #######################################
 rm -fR ${GOPATH}/* ~/.trash-cache
 mkdir -p ${WORKPATH}
-git clone --quiet -b new_layout https://${REPO}.git ${WORKPATH}
+git clone --quiet -b ${BRANCH} https://${REPO}.git ${WORKPATH}
 cd ${WORKPATH}
 set_git_modules
 git submodule --quiet update --init --recursive --remote
