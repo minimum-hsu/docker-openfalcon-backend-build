@@ -3,11 +3,11 @@
 set -e
 
 export REMOTE=origin
-export BRANCH=develop
+export BRANCH=master
 export REPO=github.com/Cepave/open-falcon-backend
 export WORKPATH=${GOPATH}/src/${REPO}
 export COMPONENT=${1:-all}
-export SUBMODULE_BRANCH=develop
+export SUBMODULE_BRANCH=master
 
 function set_git_modules() {
   modulelist=$(git config -f .gitmodules --get-regexp submodule.modules/[[:alnum:]]+?.path | awk -F " " -F "." '{ print $1 "." $2 }')
