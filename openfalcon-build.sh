@@ -27,7 +27,7 @@ git clone --quiet -b ${BRANCH} https://${REPO}.git ${WORKPATH}
 cd ${WORKPATH}
 set_git_modules
 git submodule --quiet update --init --recursive --remote
-git submodule | sed 's/^+//g' | awk -F " " '{ print $1 " " $2 }' > /package/submodules.txt
+git submodule | sed 's/^[-+]//g' | awk -F " " '{ print $1 " " $2 }' > /package/submodules.txt
 go get github.com/rancher/trash
 ${GOPATH}/bin/trash --keep
 go get ./...
