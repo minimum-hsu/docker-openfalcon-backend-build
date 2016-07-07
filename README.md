@@ -5,7 +5,7 @@
 Enter the following command in the repo directory.
 
 ```
-$ docker build -t openfalcon-build -f docker/ubuntu/Dockerfile .
+$ docker build -t openfalcon-build -f Dockerfile-ubuntu .
 ```
 
 ## Run

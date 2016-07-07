@@ -4,7 +4,7 @@ MAINTAINER minimum@cepave.com
 
 ARG ENTRYFILE=openfalcon-build.sh
 ARG BRANCH
-ENV BRANCH=${BRANCH:-develop} REPO=github.com/Cepave/open-falcon-backend DOCKERDIR=docker/ubuntu
+ENV BRANCH=${BRANCH:-master} REPO=github.com/Cepave/open-falcon-backend
 ENV WORKPATH=${GOPATH}/src/${REPO}
 
 # Build Open-Falcon Components
@@ -15,7 +15,7 @@ RUN \
   && apt-get install -y git g++ make \
   && mkdir -p ${WORKPATH}
 
-COPY ${DOCKERDIR}/${ENTRYFILE} build.sh
+COPY ${ENTRYFILE} build.sh
 
 # Start
 ENTRYPOINT ["/bin/bash"]
