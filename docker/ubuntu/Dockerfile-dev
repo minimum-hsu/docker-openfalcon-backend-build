@@ -1,0 +1,22 @@
+FROM golang:1.6
+
+MAINTAINER minimum@cepave.com
+
+ARG ENTRYFILE=openfalcon-build.sh
+ARG BRANCH
+ENV BRANCH=${BRANCH:-develop} REPO=github.com/Cepave/open-falcon-backend DOCKERDIR=docker/ubuntu
+ENV WORKPATH=${GOPATH}/src/${REPO}
+
+# Build Open-Falcon Components
+VOLUME /package
+
+RUN \
+  apt-get update \
+  && apt-get install -y git g++ make \
+  && mkdir -p ${WORKPATH}
+
+COPY ${DOCKERDIR}/${ENTRYFILE} build.sh
+
+# Start
+ENTRYPOINT ["/bin/bash"]
+CMD ["build.sh"]
