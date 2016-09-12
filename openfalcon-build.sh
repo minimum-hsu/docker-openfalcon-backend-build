@@ -5,7 +5,7 @@ set -xe
 #######################################
 # Download Source Code
 #######################################
-git clone --quiet -b ${BRANCH} https://${REPO}.git ${WORKPATH}
+git clone --quiet -b ${BRANCH#origin/} https://${REPO}.git ${WORKPATH}
 cd ${WORKPATH}
 go get ./...
 
