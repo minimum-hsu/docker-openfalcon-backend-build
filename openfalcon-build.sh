@@ -7,6 +7,7 @@ set -xe
 #######################################
 git clone --quiet -b ${BRANCH#origin/} https://${REPO}.git ${WORKPATH}
 cd ${WORKPATH}
+go get github.com/rancher/trash
 go get ./...
 
 #######################################
